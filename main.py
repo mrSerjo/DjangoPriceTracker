@@ -14,5 +14,5 @@ r = requests.get(url, headers=headers)
 
 soup = BeautifulSoup(r.text, "lxml")
 
-name = soup.find_all('span', class_='a-price a-text-price a-size-medium apexPriceToPay')
+name = soup.find('span', class_='a-offscreen').text
 print(name)
