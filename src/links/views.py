@@ -14,9 +14,9 @@ def home_view(request):
             if form.is_valid():
                 form.save()
         except AttributeError:
-            error = "Couldn`t get the name or the price"
+            error = "Не смог получить имя или цену"
         except:
-            error = "Something went wrong"
+            error = "Что-то пошло не так"
 
     form = AddLinkForm()
 
