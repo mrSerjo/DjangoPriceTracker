@@ -1,11 +1,32 @@
 {% extends 'base.html' %}
-
+{% load crispy_forms_tags %}
 
 {% block content %}
+    <div class="modal fade" id="addItemModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Добавить товар для отслеживания</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form action="" method="POST" autocomplete="off">
+                {% csrf_token %}
+                {{ form|crispy }}
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+            <button type="button" class="btn btn-primary">Сохранить</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="row">
         <div class="col text-left">
-            <button class="btn btn-outline-primary">Add</button>
-            <button class="btn btn-info">Update</button>
+            <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addItemModal">Добавить</button>
+            <button class="btn btn-info">Обновить</button>
         </div>
         <div class="col text-right">
             <div>Количество отслеживаемых товаров: {{ items_no }}</div>
